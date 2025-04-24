@@ -50,6 +50,21 @@ This addition is not covered by the above `install.sh`
 - `ip` (from `iproute2`)
 - Bash
 
+
+Sure! Here's a more general explanation for a layperson:
+
+---
+
+### 🔧 How `arping` and `ping` Work in This Script
+
+- **`arping`**: The script uses `arping` to check if devices on the local network are responding. It sends out a request to each device's IP address and waits to see if it gets a reply. If a device replies, it means the device is on the network and can be reached.
+
+- **`ping`**: After finding a device with `arping`, the script uses `ping` to double-check that the device is actually reachable and responding to network requests. This step helps ensure that the device is fully online and working while updating `ip neigh`.
+
+- **Speeding Things Up (Threading)**: To make the process faster, the script checks multiple devices at the same time (instead of one by one). It does this by running several checks in parallel, making the whole process quicker. If too many checks are happening at once, it waits for some to finish before continuing. currently set to 86, so that after 3 batches it is done with a /24 network ( this clocked in at about 46 seconds on an RPiZeroW2).
+
+This combination of `arping` and `ping`, along with running checks in parallel, helps quickly update the network's device list, ensuring everything is reachable without taking too long.
+
 ---
 
 Simple, effective, and ideal for devices on networks where ARP discovery delays cause connectivity issues.
