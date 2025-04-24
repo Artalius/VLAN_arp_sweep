@@ -14,8 +14,8 @@ This script performs a dynamic ARP scan on your local network based on your inte
 
 I couldn't reach printers or OctoPi from OctoApp (unless using ETH device) until this ARP sweep ran on boot.
 > Granted, I might have self-inflicted this by having
-> - >4 /24 VLANS
-> - >5 wi-fi networks
+> - ge4 /24 VLANS
+> - ge5 wi-fi networks
 > - mixed 2.4GHz/5GHz/ETH devices on same VLAN
 
 But all devices involved in testing were on a single non-ad-hoc VLAN
