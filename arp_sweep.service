@@ -1,0 +1,15 @@
+[Unit]
+Description=Run ARP sweep to warm neighbor cache
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/arp_sweep.sh
+RemainAfterExit=true
+TimeoutStartSec=120
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
